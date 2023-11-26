@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simplilearn.spring.bean.Sleep;
+import com.simplilearn.spring.config.Config;
 import com.simplilearn.spring.service.SleepService;
 
 @RestController
@@ -17,6 +18,9 @@ public class SleepController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     static final String PORT_PROPERTY = "local.server.port";
+    
+    @Autowired
+    Config config;
     
     @Autowired
     Environment environment;
@@ -34,5 +38,13 @@ public class SleepController {
     	
     	return new Sleep(birth,recommendation,port);
     	
+    }
+
+    @GetMapping("/sleep/config") 
+    Config getSleepConfig() {
+    	
+    	logger.debug("Getting Sleep Configuration");
+    	    	
+    	return config;
     }
 }

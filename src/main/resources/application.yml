@@ -10,7 +10,7 @@ logging.level:
 # Server Name
 spring:
   application.name: sleep-service
-  config.import: "optional:configserver:"
+  config.import: "optional:configserver:http://localhost:8888"
 
 # Enable Actuator
 management.endpoints.web.exposure.include: "*"
